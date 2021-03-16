@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="list-group">
+                <a *ngFor="let postDetail of postDetails"  class="list-group-item list-group-item-action" (click)="sendId(postDetail['id'])">
+                    {{postDetail['title']}}
+                </a> 
+                <button type="button" class="btn btn-primary" (click)="add()">Add</button> 
+            </div>
+        </div>
+        <div class="col-6">
+            <app-list-details *ngIf="show" [item]="id" (newItemEvent)="delRec($event)"></app-list-details>
+            <form [formGroup]="addRecord" *ngIf="formshow">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="email" class="form-control" placeholder="Enter Title" formControlName="title">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Post</label>
+                  <input type="text" class="form-control" placeholder="Enter Post" formControlName="post">
+                </div>
+                <div class="form-group">
+                    <input type="file" accept="image/*" class="form-control" formControlName="image1" data-max-size="200">
+                    <input type="file" accept="image/*" class="form-control" formControlName="image2">
+                    <input type="file" accept="image/*" class="form-control" formControlName="image3">
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="addNewRec()">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+  
